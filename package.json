@@ -1,11 +1,15 @@
 {
   "name": "mise-en-place",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A collection of layout primitives for building Vue.js apps.",
   "license": "MIT",
   "main": "dist/mise-en-place.ssr.js",
   "module": "dist/mise-en-place.esm.js",
   "unpkg": "dist/mise-en-place.min.js",
+  "browser": {
+    "./ssr": "src/entry.js",
+    "./layout": "src/lib/Layout/Layout.vue"
+  },
   "files": [
     "dist/*",
     "src/**/*.vue",
