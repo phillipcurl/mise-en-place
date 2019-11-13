@@ -2,6 +2,8 @@
 
 > A collection of layout primitives for building Vue.js apps.
 
+[![Demo mise-en-place](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vue-template-72l3z?fontsize=14&hidenavigation=1&theme=dark)
+
 ## Usage
 
 ### Directly in the browser
