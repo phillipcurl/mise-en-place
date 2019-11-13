@@ -1,6 +1,6 @@
 {
   "name": "mise-en-place",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A collection of layout primitives for building Vue.js apps.",
   "license": "MIT",
   "main": "dist/mise-en-place.ssr.js",
