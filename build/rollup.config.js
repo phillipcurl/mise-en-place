@@ -1,12 +1,12 @@
 // rollup.config.js
-import alias from "@rollup/plugin-alias";
-import buble from "@rollup/plugin-buble";
-import replace from "@rollup/plugin-replace";
-import minimist from "minimist";
-import path from "path";
-import commonjs from "rollup-plugin-commonjs";
-import { terser } from "rollup-plugin-terser";
-import vue from "rollup-plugin-vue";
+import alias from '@rollup/plugin-alias';
+import buble from '@rollup/plugin-buble';
+import replace from '@rollup/plugin-replace';
+import minimist from 'minimist';
+import path from 'path';
+import commonjs from 'rollup-plugin-commonjs';
+import { terser } from 'rollup-plugin-terser';
+import vue from 'rollup-plugin-vue';
 
 const argv = minimist(process.argv.slice(2));
 
@@ -79,7 +79,7 @@ if (!argv.format || argv.format === "cjs") {
       compact: true,
       file: "dist/mise-en-place.ssr.js",
       format: "cjs",
-      name: "VueLayout",
+      name: "MiseEnPlace",
       exports: "named",
       globals
     },
@@ -89,7 +89,7 @@ if (!argv.format || argv.format === "cjs") {
         ...baseConfig.plugins.vue,
         template: {
           ...baseConfig.plugins.vue.template,
-          optimizeSSR: true
+          optimizeSSR: false
         }
       }),
       ...baseConfig.plugins.postVue
@@ -106,7 +106,7 @@ if (!argv.format || argv.format === "iife") {
       compact: true,
       file: "dist/mise-en-place.min.js",
       format: "iife",
-      name: "VueLayout",
+      name: "MiseEnPlace",
       exports: "named",
       globals
     },
