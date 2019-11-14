@@ -9,6 +9,7 @@
 
 <script>
 export default {
+  name: 'Grid',
 	props: {
 		gap: {
 			type: String,

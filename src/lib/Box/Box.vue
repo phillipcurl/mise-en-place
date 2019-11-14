@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: 'Box',
 	props: {
 		pad: {
 			type: String,

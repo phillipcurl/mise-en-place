@@ -8,5 +8,5 @@ export { default as Grid } from "./Grid/Grid.vue";
 export { default as HStack } from "./HStack/HStack.vue";
 export { default as Heading } from "./Heading/Heading.vue";
 export { default as Inline } from "./Inline/Inline.vue";
-export { default as Layout } from "./Layout/Layout.vue";
+export { default as PageLayout } from "./Layout/Layout.vue";
 export { default as VStack } from "./VStack/VStack.vue";

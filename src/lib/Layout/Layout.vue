@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: 'PageLayout',
 	props: {
 		as: {
 			type: String,

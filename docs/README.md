@@ -1,3 +1,20 @@
+---
+home: true
+heroImage: https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/232/bento-box_1f371.png
+heroText: Mise En Place
+tagline: A collection of layout primitives for building Vue.js apps.
+actionText: Get Started →
+actionLink: /guide/
+features:
+  - title: Simplicity First
+    details: Minimal setup with markdown-centered project structure helps you focus on writing.
+  - title: Vue-Powered
+    details: Enjoy the dev experience of Vue + webpack, use Vue components in markdown, and develop custom themes with Vue.
+  - title: Performant
+    details: VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
+footer: MIT Licensed | Copyright © 2018-present Evan You
+---
+
 # mise-en-place
 
 <p align="center">
