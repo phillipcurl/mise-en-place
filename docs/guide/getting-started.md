@@ -1,6 +1,10 @@
 # Getting Started
 
-## In a module system
+## Installation
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis inventore autem minus optio dolorem id. Cumque pariatur ex facere voluptatem perspiciatis porro libero. Suscipit blanditiis eum saepe obcaecati quis aliquam?
+
+### In a module system
 
 Install the library with NPM:
 
@@ -26,7 +30,7 @@ export default {
 };
 ```
 
-## Directly in the browser
+### Directly in the browser
 
 Drop the library in with a `<script>` tag alongside Vue to globally install all components:
 

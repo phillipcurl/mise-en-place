@@ -8,12 +8,13 @@ import commonjs from 'rollup-plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import vue from 'rollup-plugin-vue';
 
+const cssvariables = require("postcss-css-variables");
 const argv = minimist(process.argv.slice(2));
 
 const projectRoot = path.resolve(__dirname, "..");
 
 const baseConfig = {
-  input: "src/entry.js",
+  input: "lib/entry.js",
   plugins: {
     preVue: [
       replace({
@@ -23,12 +24,15 @@ const baseConfig = {
       alias({
         resolve: [".jsx", ".js", ".vue"],
         entries: {
-          "@": path.resolve(projectRoot, "src")
+          "@": path.resolve(projectRoot, "lib")
         }
       })
     ],
     vue: {
       css: true,
+      style: {
+        postcssPlugins: [cssvariables()]
+      },
       template: {
         isProduction: true
       }

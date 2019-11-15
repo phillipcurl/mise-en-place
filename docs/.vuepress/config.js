@@ -3,6 +3,7 @@ module.exports = {
   description: "A collection of layout primitives for building Vue.js apps.",
   // extend: "@vuepress/theme-default",
   base: "/mise-en-place/",
+  head: [["link", { rel: "icon", href: "/logo.png" }]],
   themeConfig: {
     logo:
       "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/232/bento-box_1f371.png",
@@ -54,9 +55,9 @@ function getGuideSidebar() {
       children: [
         "",
         "getting-started",
-        "principles"
-        // 'basic-config',
-        // 'assets',
+        "config",
+        "principles",
+        "examples"
         // 'markdown',
         // 'using-vue',
         // 'i18n',
@@ -81,7 +82,20 @@ function getComponentsSidebar() {
     {
       title: "Components",
       collapsable: false,
-      children: ["", "box", "grid"]
+      children: [
+        "",
+        "aspect-ratio",
+        "base-text",
+        "box",
+        "center",
+        "cover",
+        "grid",
+        "heading",
+        "hstack",
+        "inline",
+        "layout-wrapper",
+        "vstack"
+      ]
     }
   ];
 }

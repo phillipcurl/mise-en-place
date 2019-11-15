@@ -1,22 +1,6 @@
-# `<Box />`
+# `<Inline />`
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis inventore autem minus optio dolorem id. Cumque pariatur ex facere voluptatem perspiciatis porro libero. Suscipit blanditiis eum saepe obcaecati quis aliquam?
-
-<!-- [[toc]] -->
-
-## Basic Usage
-
-```vue
-<Box :pad="['2', '4', '6']">
-  ...
-</Box>
-```
-
-<UsageResult>
-<Box :pad="['2', '4', '6']" class="bg-light-gray">
-  <Heading level="4" :clamp="false">Box Content</Heading>
-</Box>
-</UsageResult>
 
 ## Props
 

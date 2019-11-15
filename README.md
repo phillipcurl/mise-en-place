@@ -15,7 +15,7 @@
 
 [![Edit mise-en-place-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/mise-en-place-demo-72l3z?fontsize=14&hidenavigation=1&theme=dark&view=preview)
 
-## Usage
+## Basic Usage
 
 ### Directly in the browser
 
