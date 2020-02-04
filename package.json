@@ -99,5 +99,8 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "np": {
+    "contents": "dist"
   }
 }
