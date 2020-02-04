@@ -45,29 +45,28 @@ export default {
     return h(
       this.as,
       {
-        class: this.$theme.css({
-          ...this.css,
-          "> *": {
-            display: "flex",
-            flexWrap: "wrap",
-            m: this.firstMargin
-          },
-          "> * > *": {
-            // flex-basis: calc((-30px - (100% - var(--h-stack-gap))) * 999),
-            flexGrow: 1,
-            flexBasis: "auto",
-            m: this.secondMargin
-          },
-          "> *:first-child": {
-            ml: "0"
-          },
-          "> *:last-child": {
-            mr: "0"
-          }
-        }),
-        attrs: {
-          ...this.$attrs
-        }
+        class: this.$theme.css(
+          Object.assign({}, this.css, {
+            "> *": {
+              display: "flex",
+              flexWrap: "wrap",
+              m: this.firstMargin
+            },
+            "> * > *": {
+              // flex-basis: calc((-30px - (100% - var(--h-stack-gap))) * 999),
+              flexGrow: 1,
+              flexBasis: "auto",
+              m: this.secondMargin
+            },
+            "> *:first-child": {
+              ml: "0"
+            },
+            "> *:last-child": {
+              mr: "0"
+            }
+          })
+        ),
+        attrs: this.$attrs
       },
       [h("div", this.$slots.default)]
     );

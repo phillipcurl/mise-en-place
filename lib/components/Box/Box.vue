@@ -19,13 +19,12 @@ export default {
     return h(
       this.as,
       {
-        class: this.$theme.css({
-          ...this.css,
-          p: this.pad
-        }),
-        attrs: {
-          ...this.$attrs
-        }
+        class: this.$theme.css(
+          Object.assign({}, this.css, {
+            p: this.pad
+          })
+        ),
+        attrs: this.$attrs
       },
       this.$slots.default
     );

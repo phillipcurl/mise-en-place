@@ -15,14 +15,14 @@ export default {
     return h(
       this.as,
       {
-        class: this.$theme.css({
-          ...this.css,
+        class: this.$theme.css(
+          Object.assign({}, this.css, {
+            flexGrow: "9999 !important"
+          })
+        ),
+        attrs: Object.assign({}, this.$attrs, {
           flexGrow: "9999 !important"
-        }),
-        attrs: {
-          "aria-hidden": true,
-          ...this.$attrs
-        }
+        })
       },
       this.$slots.default
     );

@@ -77,9 +77,7 @@ export default {
       this.as,
       {
         class: this.$theme.css(this.css),
-        attrs: {
-          ...this.$attrs
-        }
+        attrs: this.$attrs
       },
       [
         h(

@@ -23,15 +23,14 @@ export default {
     return h(
       this.as,
       {
-        class: this.$theme.css({
-          ...this.css,
-          maxWidth: this.maxWidth,
-          margin: "0px",
-          lineHeight: this.lineHeight
-        }),
-        attrs: {
-          ...this.$attrs
-        }
+        class: this.$theme.css(
+          Object.assign({}, this.css, {
+            maxWidth: this.maxWidth,
+            margin: "0px",
+            lineHeight: this.lineHeight
+          })
+        ),
+        attrs: this.$attrs
       },
       this.$slots.default
     );

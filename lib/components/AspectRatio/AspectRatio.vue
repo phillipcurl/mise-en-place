@@ -29,30 +29,29 @@ export default {
     return h(
       this.as,
       {
-        class: this.$theme.css({
-          ...this.css,
-          position: "relative",
-          pb: this.padding,
-          "> *": {
-            position: "absolute",
-            top: "0px",
-            right: "0px",
-            bottom: "0px",
-            left: "0px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            overflow: "hidden"
-          },
-          "> img, > video": {
-            width: "100%",
-            height: "100%",
-            objectFit: "cover"
-          }
-        }),
-        attrs: {
-          ...this.$attrs
-        }
+        class: this.$theme.css(
+          Object.assign({}, this.css, {
+            position: "relative",
+            pb: this.padding,
+            "> *": {
+              position: "absolute",
+              top: "0px",
+              right: "0px",
+              bottom: "0px",
+              left: "0px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden"
+            },
+            "> img, > video": {
+              width: "100%",
+              height: "100%",
+              objectFit: "cover"
+            }
+          })
+        ),
+        attrs: this.$attrs
       },
       this.$slots.default
     );

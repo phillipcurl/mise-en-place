@@ -19,16 +19,15 @@ export default {
     return h(
       this.as,
       {
-        class: this.$theme.css({
-          ...this.css,
-          // boxSizing: "content-box",
-          width: "100%",
-          maxWidth: ["100%", this.maxWidth],
-          mx: "auto"
-        }),
-        attrs: {
-          ...this.$attrs
-        }
+        class: this.$theme.css(
+          Object.assign({}, this.css, {
+            // boxSizing: "content-box",
+            width: "100%",
+            maxWidth: ["100%", this.maxWidth],
+            mx: "auto"
+          })
+        ),
+        attrs: this.$attrs
       },
       this.$slots.default
     );

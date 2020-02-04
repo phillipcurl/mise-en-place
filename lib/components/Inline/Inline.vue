@@ -58,22 +58,21 @@ export default {
     return h(
       this.as,
       {
-        class: this.$theme.css({
-          ...this.css,
-          "> *": {
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: this.align,
-            justifyContent: "flex-start",
-            m: this.firstMargin
-          },
-          "> * > *": {
-            m: this.secondMargin
-          }
-        }),
-        attrs: {
-          ...this.$attrs
-        }
+        class: this.$theme.css(
+          Object.assign({}, this.css, {
+            "> *": {
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: this.align,
+              justifyContent: "flex-start",
+              m: this.firstMargin
+            },
+            "> * > *": {
+              m: this.secondMargin
+            }
+          })
+        ),
+        attrs: this.$attrs
       },
       [h("div", this.$slots.default)]
     );

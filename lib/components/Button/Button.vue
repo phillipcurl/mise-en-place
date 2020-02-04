@@ -18,17 +18,16 @@ export default {
     return h(
       "button",
       {
-        class: this.$theme.css({
-          ...this.$theme.get("button.default", "button[0]"),
-          ...this.$theme.get(`button.${this.variant}`, "button[0]"),
-          ...this.css
-        }),
-        on: {
-          ...this.$listeners
-        },
-        attrs: {
-          ...this.$attrs
-        }
+        class: this.$theme.css(
+          Object.assign(
+            {},
+            this.$theme.get("button.default", "button[0]"),
+            this.$theme.get(`button.${this.variant}`, "button[0]"),
+            this.css
+          )
+        ),
+        on: this.$listeners,
+        attrs: this.$attrs
       },
       this.$slots.default
     );

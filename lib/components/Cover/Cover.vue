@@ -23,27 +23,26 @@ export default {
     return h(
       this.as,
       {
-        class: this.$theme.css({
-          ...this.css,
-          display: "flex",
-          flexDirection: "column",
-          minHeight: this.minHeight,
-          "> *": {
-            my: this.gap
-          },
-          "> :first-child:not(.cover--content)": {
-            mt: "0px"
-          },
-          "> :last-child:not(.cover--content)": {
-            mb: "0px"
-          },
-          "> .cover--content": {
-            my: "auto"
-          }
-        }),
-        attrs: {
-          ...this.$attrs
-        }
+        class: this.$theme.css(
+          Object.assign({}, this.css, {
+            display: "flex",
+            flexDirection: "column",
+            minHeight: this.minHeight,
+            "> *": {
+              my: this.gap
+            },
+            "> :first-child:not(.cover--content)": {
+              mt: "0px"
+            },
+            "> :last-child:not(.cover--content)": {
+              mb: "0px"
+            },
+            "> .cover--content": {
+              my: "auto"
+            }
+          })
+        ),
+        attrs: this.$attrs
       },
       [
         this.$slots.header,

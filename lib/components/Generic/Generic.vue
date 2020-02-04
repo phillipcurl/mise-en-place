@@ -15,15 +15,9 @@ export default {
     return h(
       this.as,
       {
-        class: this.$theme.css({
-          ...this.css
-        }),
-        on: {
-          ...this.$listeners
-        },
-        attrs: {
-          ...this.$attrs
-        }
+        class: this.$theme.css(this.css),
+        on: this.$listeners,
+        attrs: this.$attrs
       },
       this.$slots.default
     );
