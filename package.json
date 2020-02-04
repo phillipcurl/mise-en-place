@@ -101,6 +101,7 @@
     ]
   },
   "np": {
+    "yarn": false,
     "contents": "dist"
   }
 }
