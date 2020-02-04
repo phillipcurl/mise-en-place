@@ -1,56 +1,62 @@
-<template>
-  <div
-    class="cover"
-    :style="`--cover-gap: var(--s${gap}); --cover-height: ${height};`"
-  >
-    <slot name="header" />
-    <div class="centered">
-      <slot />
-    </div>
-    <slot name="footer" />
-  </div>
-</template>
-
 <script>
-import { getPadValues, getGapValues, validateSpacingScale } from "./../../util";
-
 export default {
+  name: "Cover",
   props: {
+    minHeight: {
+      type: [String, Array],
+      default: "100%"
+    },
     gap: {
-      type: String,
+      type: [String, Array],
       default: "0"
     },
-    height: {
+    as: {
       type: String,
-      default: "100vh"
+      default: "div"
+    },
+    css: {
+      type: Object,
+      default: () => ({})
     }
+  },
+  render: function(h) {
+    return h(
+      this.as,
+      {
+        class: this.$theme.css({
+          ...this.css,
+          display: "flex",
+          flexDirection: "column",
+          minHeight: this.minHeight,
+          "> *": {
+            my: this.gap
+          },
+          "> :first-child:not(.cover--content)": {
+            mt: "0px"
+          },
+          "> :last-child:not(.cover--content)": {
+            mb: "0px"
+          },
+          "> .cover--content": {
+            my: "auto"
+          }
+        }),
+        attrs: {
+          ...this.$attrs
+        }
+      },
+      [
+        this.$slots.header,
+        h(
+          "div",
+          {
+            class: "cover--content"
+          },
+          this.$slots.default
+        ),
+        this.$slots.footer
+      ]
+    );
   }
 };
 </script>
-
-<style scoped>
-.cover {
-  display: flex;
-  flex-direction: column;
-  min-height: var(--cover-height);
-  padding: 0;
-}
-
-.cover > * {
-  margin-top: var(--cover-gap);
-  margin-bottom: var(--cover-gap);
-}
-
-.cover > :first-child:not(.centered) {
-  margin-top: 0;
-}
-
-.cover > :last-child:not(.centered) {
-  margin-bottom: 0;
-}
-
-.cover > .centered {
-  margin-top: auto;
-  margin-bottom: auto;
-}
-</style>

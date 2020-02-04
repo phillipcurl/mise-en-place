@@ -6,44 +6,39 @@ export default {
       type: [String, Array],
       default: "0"
     },
-    padX: {
-      type: [String, Array],
-      default: "0"
-    },
-    padY: {
-      type: [String, Array],
-      default: "0"
-    },
     as: {
       type: String,
       default: "div"
+    },
+    css: {
+      type: Object,
+      default: () => ({})
     }
   },
-  render: function(createElement) {
-    return createElement(
-      this.as, // tag name
+  render: function(h) {
+    return h(
+      this.as,
       {
-        class: "v-stack",
-        style: `--v-stack-gap: var(--s${this.gap}); --v-stack-padY: var(--s${this.padY});  --v-stack-padX: var(--s${this.padX});`
+        class: this.$theme.css({
+          ...this.css,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          py: this.pad ? this.pad : this.padY,
+          px: this.pad ? this.pad : this.padX,
+          "> *": {
+            my: "0px"
+          },
+          "> * + *": {
+            mt: this.gap
+          }
+        }),
+        attrs: {
+          ...this.$attrs
+        }
       },
-      this.$slots.default // array of children
+      this.$slots.default
     );
   }
 };
 </script>
-
-<style scoped>
-.v-stack {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: var(--v-stack-padY) var(--v-stack-padX);
-}
-.v-stack > * {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-.v-stack > * + * {
-  margin-top: var(--v-stack-gap);
-}
-</style>

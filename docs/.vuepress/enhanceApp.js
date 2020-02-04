@@ -1,9 +1,9 @@
 // const MiseEnPlace = require("./../../dist/mise-en-place.min");
-import * as components from './../../lib/components';
+import MiseEnPlace from './../../lib/entry';
 
 export default ({ Vue, isServer }) => {
-  // Vue.use(MiseEnPlace);
-  Object.keys(components).forEach(componentName => {
-    Vue.component(componentName, components[componentName]);
-  });
+	// Vue.use(MiseEnPlace);
+	Vue.use(MiseEnPlace, {
+		sizes: ['20rem', '30rem', '40rem']
+	});
 };

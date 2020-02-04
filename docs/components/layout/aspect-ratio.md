@@ -1,8 +1,8 @@
 # `<AspectRatio />`
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis inventore autem minus optio dolorem id. Cumque pariatur ex facere voluptatem perspiciatis porro libero. Suscipit blanditiis eum saepe obcaecati quis aliquam?
+The `<AspectRatio />` component renders its contents in a responsive container with a desired aspect ratio. It's useful for things like embedded IFrames or videos.
 
-## Basic Usage
+## Usage
 
 ```vue
 <AspectRatio ratio="16:9">
@@ -13,7 +13,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis inventore
 <UsageResult>
 <AspectRatio ratio="16:9" class="bg-light-gray">
   <!-- <img src="https://picsum.photos/1600/900" /> -->
-<Cover height="100%">
+<Cover min-height="100%">
 <Heading level="3">16:9</Heading></Cover>
 </AspectRatio>
 </UsageResult>
@@ -22,17 +22,18 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis inventore
 
 ### `ratio`
 
-- Type: `string`
+- Type: `String`
 - Default: `16:9`
 
 The desired aspect-ratio for the component. This prop must be in the format `<WIDTH>:<HEIGHT>`.
 
 ### `as`
 
-- Type: `string`
-- Default: `p`
+<as-prop name="AspectRatio" />
 
-The HTML element to render the `<AspectRatio />` component as. See [semantic HTML](./../guide/principles.md#semantic-html) for more details.
+### `css`
+
+<css-prop />
 
 ## Examples
 

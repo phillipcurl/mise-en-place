@@ -1,58 +1,81 @@
-<template>
-  <div
-    class="h-stack"
-    :style="
-      `--h-stack-gap: var(--s${gap}); --h-stack-padY: var(--s${padY});  --h-stack-padX: var(--s${padX});`
-    "
-  >
-    <div>
-      <slot />
-    </div>
-  </div>
-</template>
-
 <script>
 export default {
-  // functional: true,
+  name: "HStack",
   props: {
+    size: {
+      type: String,
+      default: "primary"
+    },
     gap: {
-      type: [String, Array],
-      default: "0"
-    },
-    padX: {
-      type: [String, Array],
-      default: "0"
-    },
-    padY: {
       type: [String, Array],
       default: "0"
     },
     as: {
       type: String,
       default: "div"
+    },
+    css: {
+      type: Object,
+      default: () => ({})
     }
+  },
+  computed: {
+    firstMargin() {
+      return Array.from(this.gap).map(val => {
+        let themeVal = this.$theme.get(`space.${val}`);
+        if (typeof themeVal === "number") {
+          return `calc(${themeVal}px / 2 * -1)`;
+        } else {
+          return `calc(${themeVal} / 2 * -1)`;
+        }
+      });
+    },
+    secondMargin() {
+      return Array.from(this.gap).map(val => {
+        let themeVal = this.$theme.get(`space.${val}`);
+        if (typeof themeVal === "number") {
+          return `calc(${themeVal}px / 2)`;
+        } else {
+          return `calc(${themeVal} / 2)`;
+        }
+      });
+    }
+  },
+  render: function(h) {
+    return h(
+      this.as,
+      {
+        class: this.$theme.css({
+          ...this.css,
+          "> *": {
+            display: "flex",
+            flexWrap: "wrap",
+            m: this.firstMargin
+          },
+          "> * > *": {
+            // flex-basis: calc((-30px - (100% - var(--h-stack-gap))) * 999),
+            flexGrow: 1,
+            flexBasis: "auto",
+            m: this.secondMargin
+          },
+          "> *:first-child": {
+            ml: "0"
+          },
+          "> *:last-child": {
+            mr: "0"
+          }
+        }),
+        attrs: {
+          ...this.$attrs
+        }
+      },
+      [h("div", this.$slots.default)]
+    );
   }
-  // render: function(createElement) {
-  // 	return createElement(
-  // 		this.as, // tag name
-  // 		{
-  // 			class: 'h-stack',
-  // 			style: `--h-stack-gap: var(--s${this.gap}); --h-stack-padY: var(--s${this.padY});  --h-stack-padX: var(--s${this.padX});`
-  // 		},
-  // 		this.$slots.default // array of children
-  // 	);
-  // }
 };
 </script>
 
 <style scoped>
-.h-stack {
-  /* display: flex;
-	flex-direction: row;
-	overflow-x: auto; */
-  padding: var(--h-stack-padY) var(--h-stack-padX);
-}
-
 /* .h-stack > * {
 	margin: 0 calc(var(--h-stack-gap) / 2);
 	flex-grow: 1;
@@ -65,20 +88,8 @@ export default {
 	margin-right: 0;
 } */
 
-.h-stack > * {
-  display: flex;
-  flex-wrap: wrap;
-  margin: calc((var(--h-stack-gap) / 2) * -1);
-}
-
-.h-stack > * > * {
-  flex-basis: calc((var(--measure) - (100% - var(--h-stack-gap))) * 999);
-  flex-grow: 1;
-  margin: calc(var(--h-stack-gap) / 2);
-}
-
-.h-stack > * > :nth-last-child(n + 5),
+/* .h-stack > * > :nth-last-child(n + 5),
 .h-stack > * > :nth-last-child(n + 5) ~ * {
   flex-basis: 100%;
-}
+} */
 </style>

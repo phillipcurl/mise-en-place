@@ -2,7 +2,7 @@
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis inventore autem minus optio dolorem id. Cumque pariatur ex facere voluptatem perspiciatis porro libero. Suscipit blanditiis eum saepe obcaecati quis aliquam?
 
-## Basic Usage
+## Usage
 
 ```vue
 <Heading level="2">
@@ -10,11 +10,15 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis inventore
 </Heading>
 ```
 
+<UsageResult>
+<Heading level='3'>This is an H2</Heading>
+</UsageResult>
+
 ## Props
 
 ### `level`
 
-- Type: `string`
+- Type: `String`
 - Required: `true`
 
 Specify the level of heading to render (e.g. `<h2>`)

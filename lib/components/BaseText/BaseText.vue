@@ -2,37 +2,39 @@
 export default {
   name: "BaseText",
   props: {
+    maxWidth: {
+      type: [String, Array],
+      default: "66ch"
+    },
+    lineHeight: {
+      type: String,
+      default: "body"
+    },
     as: {
       type: String,
       default: "p"
     },
-    maxWidth: {
-      type: String,
-      default: "var(--measure)"
-    },
-    lineHeight: {
-      type: String,
-      default: "var(--line-height-body)"
+    css: {
+      type: Object,
+      default: () => ({})
     }
   },
-  render: function(createElement) {
-    return createElement(
+  render: function(h) {
+    return h(
       this.as,
       {
-        class: "text",
-        style: `--text-max-width: ${this.maxWidth}; --text-line-height: ${this.lineHeight}`
+        class: this.$theme.css({
+          ...this.css,
+          maxWidth: this.maxWidth,
+          margin: "0px",
+          lineHeight: this.lineHeight
+        }),
+        attrs: {
+          ...this.$attrs
+        }
       },
       this.$slots.default
     );
   }
 };
 </script>
-
-<style scoped>
-.text {
-  max-width: var(--text-max-width);
-  margin: 0;
-  padding: 0;
-  line-height: var(--text-line-height);
-}
-</style>

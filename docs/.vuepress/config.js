@@ -22,7 +22,8 @@ module.exports = {
       "/components/": getComponentsSidebar()
       // '/plugin/': getPluginSidebar('Plugin', 'Introduction', 'Official Plugins'),
       // '/theme/': getThemeSidebar('Theme', 'Introduction'),
-    }
+    },
+    sidebarDepth: 2
     // sidebar: "auto"
   },
   extraWatchFiles: [
@@ -57,6 +58,7 @@ function getGuideSidebar() {
         "getting-started",
         "config",
         "principles",
+        "css-prop",
         "examples"
         // 'markdown',
         // 'using-vue',
@@ -80,22 +82,32 @@ function getGuideSidebar() {
 function getComponentsSidebar() {
   return [
     {
-      title: "Components",
-      collapsable: false,
+      title: "Layout",
+      collapsable: true,
       children: [
         "",
-        "aspect-ratio",
-        "base-text",
-        "box",
-        "center",
-        "cover",
-        "grid",
-        "heading",
-        "hstack",
-        "inline",
-        "layout-wrapper",
-        "vstack"
+        "layout/aspect-ratio",
+        "layout/box",
+        "layout/container",
+        "layout/cover",
+        "layout/grid",
+        "layout/horizontal-scroll",
+        "layout/hstack",
+        "layout/inline",
+        "layout/layout-wrapper",
+        "layout/spacer",
+        "layout/vstack"
       ]
+    },
+    {
+      title: "Content",
+      collapsable: true,
+      children: ["", "content/base-text", "content/heading"]
+    },
+    {
+      title: "Interactive",
+      collapsable: true,
+      children: ["", "interactive/button", "interactive/generic"]
     }
   ];
 }

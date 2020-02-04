@@ -4,49 +4,36 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis inventore
 
 <!-- [[toc]] -->
 
-## Basic Usage
+## Usage
 
 ```vue
-<Box :pad="['2', '4', '6']">
+<Box :pad="[2, 3, 4]">
   ...
 </Box>
 ```
 
 <UsageResult>
-<Box :pad="['2', '4', '6']" class="bg-light-gray">
+<Box :pad="[2, 3, 4]" class="bg-light-gray">
   <Heading level="4" :clamp="false">Box Content</Heading>
 </Box>
 </UsageResult>
 
 ## Props
 
-### `as`
-
-- Type: `string`
-- Default: `p`
-
-The HTML element to render the `<Box />` component as. See [semantic HTML](./../guide/principles.md#semantic-html) for more details.
-
 ### `pad`
 
-- Type: `string` or `array`
-- Default: null
+- Type: `String` or `Array<String>`
+- Default: `null`
 
 A [responsive prop](./../guide/principles.md#responsive-props) bound to the [spacing scale](./../guide/principles.md#spacing-scale) that applies padding to all sides of the `<Box />`. When specified, the `pad` prop overrides the `padX` and `padY` props.
 
-### `padX`
+### `as`
 
-- Type: `string` or `array`
-- Default: `0`
+<as-prop name="Box" />
 
-A [responsive prop](./../guide/principles.md#responsive-props) bound to the [spacing scale](./../guide/principles.md#spacing-scale) that applies padding to the left and right sides of the `<Box />`.
+### `css`
 
-### `padY`
-
-- Type: `string` or `array`
-- Default: `0`
-
-A [responsive prop](./../guide/principles.md#responsive-props) bound to the [spacing scale](./../guide/principles.md#spacing-scale) that applies padding to the top and bottom sides of the `<Box />`.
+<css-prop />
 
 ## Examples
 

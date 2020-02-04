@@ -1,27 +1,7 @@
-<template>
-  <div
-    class="inline"
-    :style="
-      `--inline-gap: var(--s${gap}); --inline-pad: var(--s${padY}); --inline-align: ${align};`
-    "
-  >
-    <div>
-      <slot />
-    </div>
-  </div>
-</template>
-
 <script>
 export default {
+  name: "Inline",
   props: {
-    gap: {
-      type: String,
-      default: "0"
-    },
-    padY: {
-      type: String,
-      default: "0"
-    },
     align: {
       type: String,
       default: "center",
@@ -38,30 +18,65 @@ export default {
           ].indexOf(value) !== -1
         );
       }
+    },
+    gap: {
+      type: [String, Array],
+      default: "0"
+    },
+    as: {
+      type: String,
+      default: "div"
+    },
+    css: {
+      type: Object,
+      default: () => ({})
     }
+  },
+  computed: {
+    firstMargin() {
+      return Array.from(this.gap).map(val => {
+        const themeVal = this.$theme.get(`space.${val}`);
+        if (typeof themeVal === "number") {
+          return `calc(${themeVal}px / 2 * -1)`;
+        } else {
+          return `calc(${themeVal} / 2 * -1)`;
+        }
+      });
+    },
+    secondMargin() {
+      return Array.from(this.gap).map(val => {
+        const themeVal = this.$theme.get(`space.${val}`);
+        if (typeof themeVal === "number") {
+          return `calc(${themeVal}px / 2)`;
+        } else {
+          return `calc(${themeVal} / 2)`;
+        }
+      });
+    }
+  },
+  render: function(h) {
+    return h(
+      this.as,
+      {
+        class: this.$theme.css({
+          ...this.css,
+          "> *": {
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: this.align,
+            justifyContent: "flex-start",
+            m: this.firstMargin
+          },
+          "> * > *": {
+            m: this.secondMargin
+          }
+        }),
+        attrs: {
+          ...this.$attrs
+        }
+      },
+      [h("div", this.$slots.default)]
+    );
   }
 };
 </script>
-
-<style scoped>
-.inline {
-  padding-top: var(--inline-pad);
-  overflow: hidden;
-}
-
-.inline:not(:last-child) {
-  padding-bottom: var(--inline-pad);
-}
-
-.inline > * {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: var(--inline-align);
-  justify-content: flex-start;
-  margin: calc(var(--inline-gap) / 2 * -1);
-}
-
-.inline > * > * {
-  margin: calc(var(--inline-gap) / 2);
-}
-</style>

@@ -2,7 +2,7 @@
 
 ## Composition
 
-Composition over inheritance. Yada, yada, yada.
+One of the core concepts of `mise-en-place` is the use of composition over inheritance. Each of the components in the library is meant to be pieced together (either around, inside, or as children of other components) in order to build larger, more complex layouts. Rather than building layout components that are specific to single
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis inventore autem minus optio dolorem id. Cumque pariatur ex facere voluptatem perspiciatis porro libero. Suscipit blanditiis eum saepe obcaecati quis aliquam?
 
@@ -20,4 +20,4 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis inventore
 
 ## Semantic HTML
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis inventore autem minus optio dolorem id. Cumque pariatur ex facere voluptatem perspiciatis porro libero. Suscipit blanditiis eum saepe obcaecati quis aliquam?
+When possible, `mise-en-place` allows you to specify an `as` prop for components. This is used to render the component as the desired HTML element. You're encouraged to use this as much as possible in order to produce apps composed of sem

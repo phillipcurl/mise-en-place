@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: "Heading",
   props: {
     level: {
       type: String,
@@ -7,35 +8,37 @@ export default {
     },
     clamp: {
       type: Boolean,
-      default: true
+      default: false
+    },
+    css: {
+      type: Object,
+      default: () => ({})
     }
   },
-  render: function(createElement) {
-    return createElement(
-      "h" + this.level, // tag name
+  render: function(h) {
+    return h(
+      `h${this.level}`,
       {
-        class: "heading",
-        style: `--heading-clamp: ${this.clamp ? "block" : "none"}`
+        class: this.$theme.css({
+          ...this.css,
+          m: "0px",
+          lineHeight: "heading",
+          "::before": {
+            display: this.clamp ? "block" : "none",
+            width: "0px",
+            height: "0px",
+            mt: `calc((0.8 - ${this.$theme.get(
+              "lineHeights.heading"
+            )}) * 0.5em)`,
+            content: '""'
+          }
+        }),
+        attrs: {
+          ...this.$attrs
+        }
       },
-      this.$slots.default // array of children
+      this.$slots.default
     );
   }
 };
 </script>
-
-<style scoped>
-.heading {
-  max-width: 60ch;
-  margin: 0;
-  line-height: var(--line-height-heading);
-}
-.heading::before {
-  display: var(--heading-clamp);
-  width: 0;
-  height: 0;
-
-  /* margin-top: calc((1rem - var(--line-height-heading)) * 0.5em); */
-  margin-top: calc((0.8 - var(--line-height-heading)) * 0.5em);
-  content: "";
-}
-</style>

@@ -15,7 +15,7 @@
 
 [![Edit mise-en-place-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/mise-en-place-demo-72l3z?fontsize=14&hidenavigation=1&theme=dark&view=preview)
 
-## Basic Usage
+## Usage
 
 ### Directly in the browser
 
@@ -72,3 +72,16 @@ export default {
   components: { Layout }
 };
 ```
+
+### TODO
+
+- icon
+- button
+- link
+- icon-button
+- icon-link
+- columns
+- column
+- fix grid
+- grid-area (for named grid areas)
+- divider

@@ -9,6 +9,10 @@ export default {
     as: {
       type: String,
       default: "div"
+    },
+    css: {
+      type: Object,
+      default: () => ({})
     }
   },
   computed: {
@@ -21,40 +25,37 @@ export default {
       }
     }
   },
-  render: function(createElement) {
-    return createElement(
+  render: function(h) {
+    return h(
       this.as,
       {
-        class: "frame",
-        style: `--frame-pad: ${this.padding};`
+        class: this.$theme.css({
+          ...this.css,
+          position: "relative",
+          pb: this.padding,
+          "> *": {
+            position: "absolute",
+            top: "0px",
+            right: "0px",
+            bottom: "0px",
+            left: "0px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            overflow: "hidden"
+          },
+          "> img, > video": {
+            width: "100%",
+            height: "100%",
+            objectFit: "cover"
+          }
+        }),
+        attrs: {
+          ...this.$attrs
+        }
       },
       this.$slots.default
     );
   }
 };
 </script>
-<style scoped>
-.frame {
-  position: relative;
-  padding-bottom: var(--frame-pad);
-}
-
-.frame > * {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.frame > img,
-.frame > video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-</style>
