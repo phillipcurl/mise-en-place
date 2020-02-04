@@ -1,6 +1,6 @@
 {
   "name": "mise-en-place",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "A collection of layout primitives for building Vue.js apps.",
   "keywords": [
     "vue",
